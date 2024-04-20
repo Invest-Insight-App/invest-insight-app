@@ -15,8 +15,10 @@ const Navbar = () => {
         />
       </Link>
       <div className="grid">
-        <h1 className="text-secondary text-xl">Investment Buddy</h1>
-        <p className="text-primary">AI-driven Market Sentiment Analysis</p>
+        <h1 className="text-secondary text-3xl">Investment Buddy</h1>
+        <p className="text-primary font-bold">
+          AI-driven Market Sentiment Analysis
+        </p>
       </div>
     </nav>
   );

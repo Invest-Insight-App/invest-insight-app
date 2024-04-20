@@ -94,6 +94,15 @@ form button {
     my-4 mx-auto;
 }
 
+/* font */
+.boldtitle {
+  @apply text-3xl;
+}
+
+.process-text {
+  @apply text-3xl font-thin text-primary;
+}
+
 /* card styles */
 .card {
   @apply bg-white 

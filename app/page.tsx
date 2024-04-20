@@ -4,43 +4,49 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <h2>Dashboard</h2>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero
-        repellendus tempore, exercitationem odit, quasi doloremque possimus
-        recusandae alias sequi totam soluta natus iure eius, obcaecati sint
-        dolores blanditiis aspernatur quo officia iusto ut. Et, aliquid sed
-        voluptates iste cum totam, facere explicabo, fugit suscipit ratione
-        aspernatur consequuntur ex mollitia quaerat?
-      </p>
+      <article className="h-68 flex flex-col p-10 justify-center items-center rounded-md my-8 bg-primary ">
+        <h1 className="text-white text-4xl ">
+          Select the market and company, Ai-driven investment buddy helps you
+          identify the market reaction
+        </h1>
 
-      <div className="flex justify-center my-8">
-        <Link href="/tickets">
-          <button className="btn-primary">View Tickets</button>
-        </Link>
-      </div>
+        <Image
+          alt="process-horizontal"
+          src="/process_3_icon.png"
+          width={300}
+          quality={100}
+          height={50}
+        />
+      </article>
 
-      <h2>Company Updates</h2>
-
-      <div className="card">
-        <h3>New member of the web dev team...</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at
-          quam. Dolores omnis possimus quam soluta rerum illo laborum ullam
-          pariatur molestiae, modi beatae corrupti.
-        </p>
+      <div className="bg-white my-8 p-6">
+        <h2 className="boldtitle">Process</h2>
+        <div className="grid grid-cols-6">
+          <div className="col-span-1 p-8">
+            <Image
+              alt="process-verticle"
+              src="/process_3_verticle.png"
+              width={80}
+              quality={100}
+              height={15}
+            />
+          </div>
+          <div className="col-span-5 grid grid-rows-3 items-center">
+            <p className="process-text">
+              {" "}
+              Pick a market, company and time-scale
+            </p>
+            <p className="process-text">
+              Choose the report or stock-picking suggestion through AI sentiment
+              analysis
+            </p>
+            <p className="process-text"> Get your result!</p>
+          </div>
+        </div>
       </div>
-      <div className="card">
-        <h3>New website live!</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at
-          quam. Dolores omnis possimus quam soluta rerum illo laborum ullam
-          pariatur molestiae, modi beatae corrupti, assumenda distinctio
-          adipisci, cupiditate minima eum vitae? Similique dicta est facilis
-          debitis, autem temporibus quo repellat illum unde id iste veritatis
-          eveniet, aspernatur enim quas.
-        </p>
-      </div>
+      <Link href="/tickets">
+        <button className="btn-primary">View Tickets</button>
+      </Link>
     </main>
   );
 }

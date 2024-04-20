@@ -4,21 +4,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <article className="h-68 flex flex-col p-10 justify-center items-center rounded-md my-8 bg-primary ">
-        <h1 className="text-white text-4xl ">
-          Select the market and company, Ai-driven investment buddy helps you
-          identify the market reaction
-        </h1>
-
-        <Image
-          alt="process-horizontal"
-          src="/process_3_icon.png"
-          width={300}
-          quality={100}
-          height={50}
-        />
-      </article>
-
       <div className="bg-white my-8 p-6 mb-0">
         <h2 className="boldtitle">Process</h2>
         <div className="grid grid-cols-6">
@@ -45,7 +30,7 @@ export default function Home() {
         </div>
       </div>
       <div className="p-6 bg-white">
-        <Link href="/market-options">
+        <Link href="/tickets">
           <button className="btn-large p-0 m-0">
             Yup, I'm ready to start!
           </button>

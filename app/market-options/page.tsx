@@ -9,7 +9,7 @@ const marketOptions = ["Stock market", "Cryptocurrency", "Bond market "];
 const companyOptions = [
   ["Tesla", "Apple", "Microsoft"],
   ["Bitcoin", "Etherium", "Solana"],
-  ["United States 10-year bond yield", "Total world bond"],
+  ["United States 10-year bond yield", "Total world"],
 ];
 const timescaleOptions = ["24 hours", "7 days", "14 days"];
 
@@ -19,6 +19,7 @@ const companies = [];
 for (let i = 0; i < marketOptions.length; i++) {
   markets.push({ id: `market-${i}`, index: i, name: marketOptions[i] });
 }
+
 markets.forEach((item) => {
   for (let i = 0; i < companyOptions.length; i++) {
     companies.push({
@@ -42,7 +43,7 @@ const selectsReducer = (state, action) => {
     case "update_market": {
       const newcompany = payload.companies.find(
         (c) => c.market === payload.value,
-      ).id;
+      ).name;
       return {
         market: payload.value,
         company: newcompany,
@@ -95,7 +96,7 @@ export const SelectList = ({ record, onSave, markets, companies }) => {
         }
       >
         {filteredCompanies.map((c) => (
-          <option key={c.id} value={c.id} name={c.name}>
+          <option key={c.id} value={c.name} name={c.name}>
             {c.name}
           </option>
         ))}
@@ -134,7 +135,7 @@ export default function Home() {
             <h2 className="process-text">Step 1</h2>
             <label htmlFor="market" className="boldtitle text-primary">
               {" "}
-              What market are you interested in?
+              What market are you interested in finding out about?
             </label>
             <div className="px-16 py-8">
               <select
@@ -142,48 +143,47 @@ export default function Home() {
                 className="x-xl bf-white border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               >
                 <option selected>Choose a market</option>
-                <option value="stock">FTSE100</option>
-                <option value="bond">S&P500</option>
+                <option value="stock">Stock market</option>
+                <option value="bond">Bond market</option>
                 <option value="crypto">Cryptocurrency</option>
               </select>
             </div>
           </div>
 
           <div>
-            <h2 className="process-text">Step 2</h2>
-            <label htmlFor="company" className="boldtitle text-primary">
+            <h2 className="process-text">Step 1</h2>
+            <label htmlFor="market" className="boldtitle text-primary">
               {" "}
-              What company are you interested in?
+              What market are you interested in finding out about?
             </label>
             <div className="px-16 py-8">
               <select
                 id="market"
                 className="x-xl bf-white border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               >
-                <option selected>Choose a company</option>
-                <option value="stock">Barclays</option>
-                <option value="bond">ARM Holdings</option>
-                <option value="crypto">BAE Systems</option>
+                <option selected>Choose a market</option>
+                <option value="stock">Stock market</option>
+                <option value="bond">Bond market</option>
+                <option value="crypto">Cryptocurrency</option>
               </select>
             </div>
           </div>
 
           <div>
-            <h2 className="process-text">Step 3</h2>
+            <h2 className="process-text">Step 1</h2>
             <label htmlFor="market" className="boldtitle text-primary">
               {" "}
-              What time-period are you interested in?
+              What market are you interested in finding out about?
             </label>
             <div className="px-16 py-8">
               <select
                 id="market"
                 className="x-xl bf-white border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               >
-                <option selected>Select Time Period</option>
-                <option value="day">Last 24 hrs </option>
-                <option value="week">Last 7 days</option>
-                <option value="month">Last month</option>
-                <option value="quarter">Last quarter</option>
+                <option selected>Choose a market</option>
+                <option value="stock">Stock market</option>
+                <option value="bond">Bond market</option>
+                <option value="crypto">Cryptocurrency</option>
               </select>
             </div>
           </div>

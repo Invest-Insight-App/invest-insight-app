@@ -4,89 +4,81 @@ import Image from "next/image";
 import Link from "next/link";
 import { useReducer, useState } from "react";
 
-// Test data
-const planets = [];
-const countries = [];
-const cities = [];
-for (let i = 0; i < 6; i++) {
-  planets.push({ id: `planet-${i}`, name: `planet-${i}` });
+// our own options
+const marketOptions = ["Stock market", "Cryptocurrency", "Bond market "];
+const companyOptions = [
+  ["Tesla", "Apple", "Microsoft"],
+  ["Bitcoin", "Etherium", "Solana"],
+  ["United States 10-year bond yield", "Total world bond"],
+];
+const timescaleOptions = ["24 hours", "7 days", "14 days"];
+
+const markets = [];
+const companies = [];
+
+for (let i = 0; i < marketOptions.length; i++) {
+  markets.push({ id: `market-${i}`, index: i, name: marketOptions[i] });
 }
-planets.forEach((item) => {
-  for (let i = 0; i < 3; i++) {
-    countries.push({
-      id: `${item.id}-country-${i}`,
-      name: `${item.id}-country-${i}`,
-      planet: item.id,
+markets.forEach((item) => {
+  for (let i = 0; i < companyOptions.length; i++) {
+    companies.push({
+      id: `${item.id}-company-${i}`,
+      name: companyOptions[item.index][i],
+      index: i,
+      market: item.id,
     });
   }
 });
-countries.forEach((item) => {
-  for (let i = 0; i < 3; i++) {
-    cities.push({
-      id: `${item.id}-city-${i}`,
-      name: `${item.id}-city-${i}`,
-      country: item.id,
-    });
-  }
-});
+
 const record = {
-  planet: planets[0].id,
-  country: countries[0].id,
-  city: cities[0].id,
+  market: markets[0].name,
+  company: companies[0].name,
 };
 
 // Updated to use a common structure for reducer, also kept it pure so it can be moved out of component
 const selectsReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
-    case "update_planet": {
-      const newCountry = payload.countries.find(
-        (c) => c.planet === payload.value,
+    case "update_market": {
+      const newcompany = payload.companies.find(
+        (c) => c.market === payload.value,
       ).id;
       return {
-        planet: payload.value,
-        country: newCountry,
-        city: payload.cities.find((c) => c.country === newCountry).id,
+        market: payload.value,
+        company: newcompany,
       };
     }
-    case "update_country": {
+    case "update_company": {
       return {
         ...state,
-        country: payload.value,
-        city: payload.cities.find((c) => c.country === payload.value).id,
+        company: payload.value,
       };
     }
-    case "update_city": {
-      return {
-        ...state,
-        city: payload.value,
-      };
-    }
+
     default:
       return { ...state };
   }
 };
 
 // Selects component
-export const SelectList = ({ record, onSave, planets, countries, cities }) => {
+export const SelectList = ({ record, onSave, markets, companies }) => {
   const [selects, dispatchSelects] = useReducer(selectsReducer, record);
-  const filteredCountries = countries.filter(
-    (c) => c.planet === selects.planet,
+  const filteredCompanies = companies.filter(
+    (c) => c.market === selects.market,
   );
-  const filteredCities = cities.filter((c) => c.country === selects.country);
 
   return (
     <div>
       <select
-        value={selects.planet}
+        value={selects.market}
         onChange={(e) =>
           dispatchSelects({
-            type: "update_planet",
-            payload: { value: e.target.value, countries, cities },
+            type: "update_market",
+            payload: { value: e.target.value, companies },
           })
         }
       >
-        {planets.map((p) => (
+        {markets.map((p) => (
           <option key={p.id} value={p.id} name={p.name}>
             {p.name}
           </option>
@@ -94,31 +86,15 @@ export const SelectList = ({ record, onSave, planets, countries, cities }) => {
       </select>
 
       <select
-        value={selects.country}
+        value={selects.company}
         onChange={(e) =>
           dispatchSelects({
-            type: "update_country",
-            payload: { value: e.target.value, cities },
-          })
-        }
-      >
-        {filteredCountries.map((c) => (
-          <option key={c.id} value={c.id} name={c.name}>
-            {c.name}
-          </option>
-        ))}
-      </select>
-
-      <select
-        value={selects.city}
-        onChange={(e) =>
-          dispatchSelects({
-            type: "update_city",
+            type: "update_company",
             payload: { value: e.target.value },
           })
         }
       >
-        {filteredCities.map((c) => (
+        {filteredCompanies.map((c) => (
           <option key={c.id} value={c.id} name={c.name}>
             {c.name}
           </option>
@@ -139,20 +115,19 @@ export default function Home() {
         <SelectList
           record={record}
           onSave={(savedObj) => setSaved(savedObj)}
-          planets={planets}
-          countries={countries}
-          cities={cities}
+          markets={markets}
+          companies={companies}
         />
         {saved ? (
           <div>
-            {saved?.planet && <p>{`Saved planet: ${saved.planet}`}</p>}
-            {saved?.country && <p>{`Saved country: ${saved.country}`}</p>}
-            {saved?.city && <p>{`Saved city: ${saved.city}`}</p>}
+            {saved?.market && <p>{`Saved market: ${saved.market}`}</p>}
+            {saved?.company && <p>{`Saved company: ${saved.company}`}</p>}
           </div>
         ) : (
           <p>No saved result yet</p>
         )}
       </div>
+
       <form>
         <div className="bg-white my-8 p-6 mb-0">
           <div>

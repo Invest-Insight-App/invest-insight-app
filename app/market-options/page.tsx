@@ -134,7 +134,7 @@ export default function Home() {
             <h2 className="process-text">Step 1</h2>
             <label htmlFor="market" className="boldtitle text-primary">
               {" "}
-              What market are you interested in finding out about?
+              What market are you interested in?
             </label>
             <div className="px-16 py-8">
               <select
@@ -142,47 +142,48 @@ export default function Home() {
                 className="x-xl bf-white border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               >
                 <option selected>Choose a market</option>
-                <option value="stock">Stock market</option>
-                <option value="bond">Bond market</option>
+                <option value="stock">FTSE100</option>
+                <option value="bond">S&P500</option>
                 <option value="crypto">Cryptocurrency</option>
               </select>
             </div>
           </div>
 
           <div>
-            <h2 className="process-text">Step 1</h2>
-            <label htmlFor="market" className="boldtitle text-primary">
+            <h2 className="process-text">Step 2</h2>
+            <label htmlFor="company" className="boldtitle text-primary">
               {" "}
-              What market are you interested in finding out about?
+              What company are you interested in?
             </label>
             <div className="px-16 py-8">
               <select
                 id="market"
                 className="x-xl bf-white border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               >
-                <option selected>Choose a market</option>
-                <option value="stock">Stock market</option>
-                <option value="bond">Bond market</option>
-                <option value="crypto">Cryptocurrency</option>
+                <option selected>Choose a company</option>
+                <option value="stock">Barclays</option>
+                <option value="bond">ARM Holdings</option>
+                <option value="crypto">BAE Systems</option>
               </select>
             </div>
           </div>
 
           <div>
-            <h2 className="process-text">Step 1</h2>
+            <h2 className="process-text">Step 3</h2>
             <label htmlFor="market" className="boldtitle text-primary">
               {" "}
-              What market are you interested in finding out about?
+              What time-period are you interested in?
             </label>
             <div className="px-16 py-8">
               <select
                 id="market"
                 className="x-xl bf-white border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               >
-                <option selected>Choose a market</option>
-                <option value="stock">Stock market</option>
-                <option value="bond">Bond market</option>
-                <option value="crypto">Cryptocurrency</option>
+                <option selected>Select Time Period</option>
+                <option value="day">Last 24 hrs </option>
+                <option value="week">Last 7 days</option>
+                <option value="month">Last month</option>
+                <option value="quarter">Last quarter</option>
               </select>
             </div>
           </div>

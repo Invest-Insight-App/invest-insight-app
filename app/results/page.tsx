@@ -7,6 +7,9 @@ import Link from "next/link";
 export const Report = () => {
   const searchParams = useSearchParams();
 
+  const searchFromDate = searchParams.get("date");
+  const searchExchange = searchParams.get("exchange");
+
   useEffect(() => {
     console.log("searchParams", searchParams.get("date"));
     console.log("searchParams", searchParams.get("exchange"));
@@ -89,9 +92,9 @@ export const Report = () => {
       case "positive":
         return "red-500";
       case "negative":
-        return "text-green-500";
+        return "green-500";
       case "neutral":
-        return "text-gray-500";
+        return "gray-500";
       default:
         return "";
     }
@@ -107,8 +110,8 @@ export const Report = () => {
 
           <div className=" w-full  p-10 grid grid-cols-3 place-items-center ">
             <div className="flex flex-col items-center">
-              <h1 className="text-primary text-4xl ">Nasdaq</h1>
-              <p className="text-primary text-lg"> From 10/02/2023</p>
+              <h1 className="text-primary text-4xl ">{searchExchange}</h1>
+              <p className="text-primary text-lg"> From {searchFromDate}</p>
             </div>
             <div className="col-span-2 flex flex-col gap-4 justify-center items-center">
               <div
@@ -134,13 +137,16 @@ export const Report = () => {
               {responses.map((response, index) => (
                 <li className="p-4" key={index}>
                   <h2
-                    className={getLabelColorClass(
+                    className={`text-${getLabelColorClass(
                       response.article_sentiment_analysis[0].label,
-                    )}
+                    )}`}
                   >
                     {response.article_sentiment_analysis[0].label}
                   </h2>
-                  <a href={response.article_url}>
+                  <a
+                    href={response.article_url}
+                    className="hover:font-bold hover:cursor-pointer text-primary"
+                  >
                     <p>{response.article_name}</p>
                   </a>
                 </li>

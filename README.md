@@ -1,5 +1,6 @@
 # Investment Buddy - Ai-driven Market Sentiment Analysis
-![favicon-16x16](https://github.com/Invest-Insight-App/invest-insight-app/assets/128807685/10dba1af-dc48-4ac2-8b4f-09b13ce8f55f)
+
+![apple-touch-icon](https://github.com/Invest-Insight-App/invest-insight-app/assets/128807685/fe6b54e4-84d6-4b12-910c-7c886640252e)
 
 
 ## Getting Started

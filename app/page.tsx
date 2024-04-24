@@ -46,7 +46,9 @@ export default function Home() {
       </div>
       <div className="p-6 bg-white">
         <Link href="/market-options">
-          <button className="btn-large p-0 m-0">Do another search!</button>
+          <button className="btn-large p-0 m-0">
+            Yup, I'm ready to start!
+          </button>
         </Link>
       </div>
     </main>

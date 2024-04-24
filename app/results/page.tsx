@@ -78,9 +78,9 @@ export const Report = () => {
 
   // Determine the color class based on the average score
   let scoreColorClass = "";
-  if (averageScore > 6) {
+  if (averageScore > 0.6) {
     scoreColorClass = "red-500";
-  } else if (averageScore >= 4 && averageScore <= 6) {
+  } else if (averageScore >= 0.4 && averageScore <= 0.6) {
     scoreColorClass = "gray-500";
   } else {
     scoreColorClass = "green-500";

@@ -15,7 +15,7 @@
 
 <img width="578" alt="Screenshot 2024-04-25 at 00 08 41" src="https://github.com/Invest-Insight-App/invest-insight-app/assets/128807685/930dbb13-9696-4a6a-8fbf-57000e4fbfb8">
 
-## Sentimenet Analysis the financial news retrieved from an API
+## Sentiment Analysis the financial news retrieved from an API
 
 - user is able to select Market and the Date
 

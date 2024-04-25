@@ -15,22 +15,27 @@ const marketOptions = ["NYSE", "NASDAQ", "NYSEMKT", "NYSEARCA", "OTC", "BATS", "
 
 export const SelectList = () => {
 
-  const { totalPages, calculateTotalNumberOfPages, handleRowClick, selectedRow, page, ticker, paginate, currentPage } = useTable();
+  const { totalPages, calculateTotalNumberOfPages, handleRowClick, selectedRow, page, ticker, paginate, currentPage, setCurrentPage } = useTable();
   const { formatDate, dateObject, date} = useDate();
-  const { fetchData, companiesData, totalCount} = useFetchTasks();
   const [ exchange, setExchange] = useState("NYSE");
+  const { fetchData, responseData} = useFetchTasks();
 
   useEffect(() => {
     const dateObject = new Date();
     formatDate(new Date(dateObject))
+    const page = 1
+    setCurrentPage(page)
+    fetchData(`/api/exchangeMarket/${exchange}/${page}`)
 
-    fetchData(exchange, page)
-    calculateTotalNumberOfPages(totalCount , 10)
-  }, [exchange, page, totalCount]);
+    calculateTotalNumberOfPages(responseData.total_count , 10)
+
+}, [exchange, page, responseData.total_count]);
+
 
   const handlePageChange = (currentPage: any) => {
     paginate(currentPage)
-    fetchData(exchange, currentPage)
+    // fetchData(exchange, currentPage)
+    fetchData(`/api/exchangeMarket/${exchange}/${currentPage}`)
   }
 
   return (
@@ -57,7 +62,7 @@ export const SelectList = () => {
             </div>
 
             <div>
-              <Table data={companiesData} itemsPerPage={10} totalPages={totalPages} handleRowClick={handleRowClick} selectedRow={selectedRow} handlePageChange={handlePageChange} currentPage={currentPage} />
+              <Table data={responseData.companies} itemsPerPage={10} totalPages={totalPages} handleRowClick={handleRowClick} selectedRow={selectedRow} handlePageChange={handlePageChange} currentPage={currentPage} />
             </div>
       </div>
 
@@ -72,7 +77,7 @@ export const SelectList = () => {
         </button>
       </Link>
 
-      <Link href={{ pathname: '/results', query: { date: date, ticker: ticker } }} className="col-start-4 col-end-6">
+      <Link href={{ pathname: '/results', query: { date: date, symbol: ticker } }} className="col-start-4 col-end-6">
         <button className="btn-large p-0 m-0  "> Next </button>
       </Link>
     </div>

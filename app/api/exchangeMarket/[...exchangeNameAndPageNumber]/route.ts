@@ -10,7 +10,7 @@ export async function GET(req: Request, context: { params: Params}) {
   const pageNumber = context.params.exchangeNameAndPageNumber[1]
 
   try {
-    const response = await fetch(`http://127.0.0.1:8000/ExchangeMarket/v1/Companies/${companyName}?page=${pageNumber}&limit=100`, {
+    const response = await fetch(`http://127.0.0.1:8000/ExchangeMarket/v1/Companies/${companyName}?page=${pageNumber}&limit=10`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

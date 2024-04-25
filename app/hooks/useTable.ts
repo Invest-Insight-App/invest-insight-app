@@ -36,7 +36,8 @@ function useTable() {
     setSelectedRow,
     setPage,
     page,
-    ticker
+    ticker,
+    setCurrentPage
   };
 }
 

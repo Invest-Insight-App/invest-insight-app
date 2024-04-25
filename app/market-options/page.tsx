@@ -39,50 +39,42 @@ export const SelectList = () => {
   }
 
   return (
-    <main>
 
-    <div>
-      <div className="bg-white my-8 p-6 mb-0">
-            <div>
-              <h2 className="process-text">Step 1</h2>
-              <label htmlFor="market" className="boldtitle text-primary">
-                {" "}
-                What market are you interested in finding out about?
-              </label>
-              <SelectorComponent data={marketOptions} select={exchange} handleChange={setExchange} />
-            </div>
-
-            <div>
-              <h2 className="process-text">Step 2</h2>
-              <label htmlFor="timescale" className="boldtitle text-primary">
-                {" "}
-                What timescale are you interested in finding out about?
-              </label>
-              <DatePicker selected={dateObject} onChange={(date) => formatDate(date)} />
-            </div>
-
-            <div>
-              <Table data={responseData.companies} itemsPerPage={10} totalPages={totalPages} handleRowClick={handleRowClick} selectedRow={selectedRow} handlePageChange={handlePageChange} currentPage={currentPage} />
-            </div>
+    <main className="bg-gray-100 min-h-screen">
+  <div className="container mx-auto py-8">
+    <div className="bg-white shadow-md rounded-md p-6">
+      <div className="mb-8">
+        <h2 className="text-lg font-semibold mb-2">Step 1</h2>
+        <label htmlFor="market" className="block text-primary font-bold mb-2">
+          What market are you interested in finding out about?
+        </label>
+        <SelectorComponent data={marketOptions} select={exchange} handleChange={setExchange} />
       </div>
 
+      <div className="mb-8">
+        <h2 className="text-lg font-semibold mb-2">Step 2</h2>
+        <label htmlFor="timescale" className="block text-primary font-bold mb-2">
+          What timescale are you interested in finding out about?
+        </label>
+        <DatePicker selected={dateObject} onChange={(date) => formatDate(date)} />
       </div>
 
-
-    <div className="p-6 bg-white grid grid-cols-5">
-      <Link href="/" className="col-start-1 col-end-3">
-        <button className="btn-large p-0 m-0 col-start-1 col-end-2">
-          {" "}
-          Previous{" "}
-        </button>
-      </Link>
-
-      <Link href={{ pathname: '/results', query: { date: date, symbol: ticker } }} className="col-start-4 col-end-6">
-        <button className="btn-large p-0 m-0  "> Next </button>
-      </Link>
+      <div>
+        <Table data={responseData.companies} itemsPerPage={10} totalPages={totalPages} handleRowClick={handleRowClick} selectedRow={selectedRow} handlePageChange={handlePageChange} currentPage={currentPage} />
+      </div>
     </div>
 
-    </main>
+    <div className="grid grid-cols-5 mt-8">
+      <Link href="/" className="col-span-2">
+        <button className="btn-large p-0">Previous</button>
+      </Link>
+      <div className="col-span-1"></div>
+      <Link href={{ pathname: '/results', query: { date: date, symbol: ticker } }} className="col-span-2">
+        <button className="btn-large p-0">Next</button>
+      </Link>
+    </div>
+  </div>
+</main>
 
   );
 };

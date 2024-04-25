@@ -19,11 +19,14 @@
 
 - user is able to select Market and the Date
 
-## Frontend Technology stack
+## Technology stack
 
 - Next.js
 - React.js
 - Taiwind
+- Hugging Faces Transformers Library (financial sentiment analysis and summarization)
+- Fast API
+- MySQL
 
 ## Backend repo
 
